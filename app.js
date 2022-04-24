@@ -3,7 +3,7 @@ const session = require("express-session")
 const passport = require('passport')
 const port = 3000
 require('./auth');
-require('dotenv').config();
+
 
 const app = express();
 
@@ -11,9 +11,6 @@ app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
-const key = "AIzaSyA1xda-Xsgwm_TgbOMuHcgkL4k9W_dfGco"
 
 function isLoggedIn(req, res, next) {
     req.user ? next() : res.sendStatus(401);
