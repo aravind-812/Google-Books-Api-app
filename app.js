@@ -7,6 +7,8 @@ require('./auth');
 
 const app = express();
 
+app.use(express.static('./public'));
+app.use(express.json());
 app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -32,6 +34,7 @@ app.get('/google/callback',
     }));
 
 app.get('/search', isLoggedIn, (req, res) => {
+    //console.log(req)
     res.send("<h1></h1>")
 })
 
